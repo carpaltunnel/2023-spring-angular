@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./vehicles.component.css']
 })
 export class VehiclesComponent {
-
+  make = 'Honda';
 }
