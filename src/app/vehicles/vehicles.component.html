@@ -1,18 +1,10 @@
-<h2>{{ vehicle.make | uppercase }} Details : </h2>
-<div>
-  <span>id: </span> {{ vehicle.id }}
-</div>
+<h2>Vehicles</h2>
 
-
-<div>
-  <label for="make">Make: </label>
-  <input id="make" [(ngModel)]="vehicle.make" placeholder="Vehicle Make">
-</div>
-<div>
-  <label for="model">Model: </label>
-  <input id="model" [(ngModel)]="vehicle.model">
-</div>
-<div>
-  <label for="year">Year: </label>
-  <input id="year" [(ngModel)]="vehicle.year">
-</div>
+<ul class="vehicles">
+  <li *ngFor="let vehicle of vehicles">
+    <button type="button">
+      <span class="badge">{{ vehicle.id }}</span>
+      <span class="name"> {{ vehicle.make }}</span>
+    </button>
+  </li>
+</ul>
