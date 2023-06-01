@@ -1,5 +1,12 @@
 <h2>{{ vehicle.make | uppercase }} Details : </h2>
-<div><span>id: </span> {{ vehicle.id }}</div>
-<div><span>make: </span>{{ vehicle.make }}</div>
+<div>
+  <span>id: </span> {{ vehicle.id }}
+</div>
+
+
+<div>
+  <label for="make">Make: </label>
+  <input id="make" [(ngModel)]="vehicle.make" placeholder="Vehicle Make">
+</div>
 <div><span>model: </span>{{ vehicle.model }}</div>
 <div><span>year: </span>{{ vehicle.year }}</div>
