@@ -3,7 +3,7 @@
 <ul class="vehicles">
   <li *ngFor="let vehicle of vehicles">
     <button type="button">
-      <span class="badge">{{ vehicle.id }}</span>
+      <span class="badge">{{ vehicle.id.slice(0, 3) }}</span>
       <span class="name"> {{ vehicle.make }}</span>
     </button>
   </li>
