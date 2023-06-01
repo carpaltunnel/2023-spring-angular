@@ -12,6 +12,5 @@ export class VehiclesComponent {
     make: 'Honda',
     model: 'Accord',
     year: 2020,
-    color: 'blue',
   };
 }
