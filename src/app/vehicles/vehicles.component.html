@@ -7,4 +7,20 @@
       <span class="name"> {{ vehicle.make }}</span>
     </button>
   </li>
+
+  <br>
+  <div *ngIf="selectedVehicle"> <!-- if (selectedVehicle) { show div } -->
+    <h2>{{ selectedVehicle.make | uppercase }} Details</h2>
+    <div>ID: {{ selectedVehicle.id }}</div>
+    <div>
+       Make: {{ selectedVehicle.make }} 
+    </div>
+    <div>
+      <label for="vehicle-model">Model: </label>
+      <input id="vehicle-model" [(ngModel)]="selectedVehicle.model"  placeholder="Model">
+    </div>
+    <div>
+      Year : {{ selectedVehicle.year }}
+    </div>
+  </div>
 </ul>

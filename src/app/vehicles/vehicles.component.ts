@@ -9,7 +9,7 @@ import { VEHICLES } from '../mock-vehicles';
 })
 export class VehiclesComponent {
   vehicles = VEHICLES;
-  selectedVehicle?: Vehicle;
+  selectedVehicle!: Vehicle;
 
   onSelect(vehicle: Vehicle): void {
     this.selectedVehicle = vehicle;
