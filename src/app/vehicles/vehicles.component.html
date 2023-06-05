@@ -2,7 +2,8 @@
 
 <ul class="vehicles">
   <li *ngFor="let vehicle of vehicles">
-    <button type="button" (click)="onSelect(vehicle)">
+    <button type="button" (click)="onSelect(vehicle)"
+        [class.selected]="vehicle === selectedVehicle">
       <span class="badge">{{ vehicle.id.slice(0, 3) }}</span>
       <span class="name"> {{ vehicle.make }}</span>
     </button>
@@ -11,16 +12,16 @@
   <br>
   <div *ngIf="selectedVehicle"> <!-- if (selectedVehicle) { show div } -->
     <h2>{{ selectedVehicle.make | uppercase }} Details</h2>
-    <div>ID: {{ selectedVehicle.id }}</div>
+    <div><strong>ID:</strong> {{ selectedVehicle.id }}</div>
     <div>
-       Make: {{ selectedVehicle.make }} 
+       <strong>Make:</strong> {{ selectedVehicle.make }} 
     </div>
     <div>
-      <label for="vehicle-model">Model: </label>
+      <label for="vehicle-model"><strong>Model:</strong> </label>
       <input id="vehicle-model" [(ngModel)]="selectedVehicle.model"  placeholder="Model">
     </div>
     <div>
-      Year : {{ selectedVehicle.year }}
+      <strong>Year :</strong> {{ selectedVehicle.year }}
     </div>
   </div>
 </ul>
