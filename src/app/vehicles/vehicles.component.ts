@@ -11,7 +11,20 @@ export class VehiclesComponent {
   vehicles:Vehicle[] = [];
   selectedVehicle!: Vehicle;
 
+  constructor(private vehicleService:VehicleService){}
+
   onSelect(vehicle: Vehicle): void {
     this.selectedVehicle = vehicle;
+  }
+
+  getVehicles(): void {
+    this.vehicleService.getVehicles()
+      .subscribe((vehicles) => {
+        this.vehicles = vehicles;
+      });
+  }
+
+  ngOnInit(): void {
+    this.getVehicles();
   }
 }
