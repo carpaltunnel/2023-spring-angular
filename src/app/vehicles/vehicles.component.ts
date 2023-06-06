@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MessageService } from '../message.service';
 import { Vehicle } from '../vehicle';
 import { VehicleService } from '../vehicle.service';
 
@@ -11,9 +12,11 @@ export class VehiclesComponent {
   vehicles:Vehicle[] = [];
   selectedVehicle!: Vehicle;
 
-  constructor(private vehicleService:VehicleService){}
+  constructor(private vehicleService:VehicleService,
+    private messageService: MessageService){}
 
   onSelect(vehicle: Vehicle): void {
+    this.messageService.add(`VehiclesComponent: onSelect(${vehicle.id})`);
     this.selectedVehicle = vehicle;
   }
 
