@@ -5,12 +5,14 @@ import { AppComponent } from './app.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { FormsModule } from '@angular/forms';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VehiclesComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
