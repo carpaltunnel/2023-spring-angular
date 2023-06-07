@@ -7,13 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { VehicleDetailsComponent } from './vehicle-details/vehicle-details.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VehiclesComponent,
     VehicleDetailsComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
