@@ -2,10 +2,9 @@
 
 <ul class="vehicles">
   <li *ngFor="let vehicle of vehicles">
-    <button type="button" (click)="onSelect(vehicle)"
-        [class.selected]="vehicle === selectedVehicle">
+    <a routerLink="/vehicles/{{ vehicle.id }}">
       <span class="badge">{{ vehicle.id.slice(0, 3) }}</span>
       <span class="name"> {{ vehicle.make }}</span>
-    </button>
+    </a>
   </li>
 </ul>

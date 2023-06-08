@@ -9,16 +9,10 @@ import { VehicleService } from '../vehicle.service';
   styleUrls: ['./vehicles.component.css']
 })
 export class VehiclesComponent {
-  vehicles:Vehicle[] = [];
+  vehicles: Vehicle[] = [];
   selectedVehicle!: Vehicle;
 
-  constructor(private vehicleService:VehicleService,
-    private messageService: MessageService){}
-
-  onSelect(vehicle: Vehicle): void {
-    this.messageService.add(`VehiclesComponent: onSelect(${vehicle.id})`);
-    this.selectedVehicle = vehicle;
-  }
+  constructor(private vehicleService: VehicleService) { }
 
   getVehicles(): void {
     this.vehicleService.getVehicles()

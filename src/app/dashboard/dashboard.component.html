@@ -1,6 +1,7 @@
 <h2>Best Selling Vehicles</h2>
 <div class="vehicles-menu">
-  <a *ngFor="let vehicle of vehicles">
+  <a *ngFor="let vehicle of vehicles"
+    routerLink="/vehicles/{{ vehicle.id }}">
     {{ vehicle.make }} : {{ vehicle.model }}
   </a>
 </div>

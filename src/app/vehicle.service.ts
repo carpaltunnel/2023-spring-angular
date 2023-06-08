@@ -16,4 +16,14 @@ export class VehicleService {
     this.messageService.add('VehicleService: getVehicles()');
     return vehicles;
   }
+
+  getVehicle(id: string | null): Observable<Vehicle | undefined> {
+    if (!id) {
+      return of(undefined);
+    }
+    
+    const vehicle = VEHICLES.find(veh => veh.id === id);
+    this.messageService.add(`VehicleService: getVehicle(${id})`);
+    return of(vehicle);
+  }
 }

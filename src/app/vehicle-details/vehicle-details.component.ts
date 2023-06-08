@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Vehicle } from '../vehicle';
+import { VehicleService } from '../vehicle.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -7,5 +10,24 @@ import { Vehicle } from '../vehicle';
   styleUrls: ['./vehicle-details.component.css']
 })
 export class VehicleDetailsComponent {
-  @Input() vehicle?: Vehicle;
+  vehicle: Vehicle | undefined; 
+
+  constructor(
+    private vehicleService: VehicleService,
+    private route: ActivatedRoute,
+    private location: Location
+  ){};
+
+  ngOnInit(): void {
+    this.getVehicle();
+  }
+
+  getVehicle(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.vehicleService.getVehicle(id)
+      .subscribe((vehicle) => {
+        this.vehicle = vehicle;
+      });
+  }
 }
