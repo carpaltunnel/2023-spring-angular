@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Vehicle } from './vehicle';
 import { VEHICLES } from './mock-vehicles';
 import { Observable, of } from 'rxjs';
@@ -8,10 +9,15 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class VehicleService {
+  // TODO: Ensure this is correct with CORS+Proxy
+  private vehiclesUrl = 'api/v1/vehicles';
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+    private http: HttpClient) { }
 
   getVehicles(): Observable<Vehicle[]> {
+    // TODO: Start here on Monday : 2023-06-12
+    // TODO:  ** CONFIGURE PROXY.CONF, HANDLE CORS **
     const vehicles = of(VEHICLES);
     this.messageService.add('VehicleService: getVehicles()');
     return vehicles;
