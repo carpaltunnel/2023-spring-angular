@@ -30,4 +30,8 @@ export class VehicleDetailsComponent {
         this.vehicle = vehicle;
       });
   }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
