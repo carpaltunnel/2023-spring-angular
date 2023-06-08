@@ -15,7 +15,7 @@ export class DashboardComponent {
   getVehicles(): void {
     this.vehicleService.getVehicles()
       .subscribe((vehicles) => {
-        this.vehicles = vehicles.slice(1, 5);
+        this.vehicles = vehicles.slice(0, 5);
       });
   }
 
