@@ -9,7 +9,6 @@ import { MessageService } from './message.service';
   providedIn: 'root'
 })
 export class VehicleService {
-  // TODO: Ensure this is correct with CORS+Proxy
   private vehiclesUrl = 'api/v1/vehicles';
 
   constructor(private messageService: MessageService,
@@ -17,7 +16,10 @@ export class VehicleService {
 
   getVehicles(): Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(this.vehiclesUrl)
-      .pipe(catchError(this.handleError<Vehicle[]>('getVehicles', [])));
+      .pipe(
+        tap(_ => this.messageService.add('Fetched Vehicles')),
+        catchError(this.handleError<Vehicle[]>('getVehicles', []))
+        );
   }
 
   getVehicle(id: string | null): Observable<Vehicle | undefined> {
@@ -25,9 +27,11 @@ export class VehicleService {
       return of(undefined);
     }
     
-    const vehicle = VEHICLES.find(veh => veh.id === id);
-    this.messageService.add(`VehicleService: getVehicle(${id})`);
-    return of(vehicle);
+    return this.http.get<Vehicle>(`${this.vehiclesUrl}/${id}`)
+      .pipe(
+        tap(_ => this.messageService.add(`Fetched Vehicle ID ${id}`)),
+        catchError(this.handleError<Vehicle>('getVehicle'))
+        );
   }
 
   private handleError<T>(op = '', result?: T) {
