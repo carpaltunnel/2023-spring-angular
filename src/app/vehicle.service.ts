@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Vehicle } from './vehicle';
 import { VEHICLES } from './mock-vehicles';
-import { Observable, of } from 'rxjs';
+import { Observable, of, catchError, map, tap } from 'rxjs';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -16,12 +16,8 @@ export class VehicleService {
     private http: HttpClient) { }
 
   getVehicles(): Observable<Vehicle[]> {
-    // TODO: Start here on Monday : 2023-06-12
-    // TODO:  ** CONFIGURE PROXY.CONF, HANDLE CORS **
-    //const vehicles = of(VEHICLES);
-    //this.messageService.add('VehicleService: getVehicles()');
-    //return vehicles;
-    return this.http.get<Vehicle[]>(this.vehiclesUrl);
+    return this.http.get<Vehicle[]>(this.vehiclesUrl)
+      .pipe(catchError(this.handleError<Vehicle[]>('getVehicles', [])));
   }
 
   getVehicle(id: string | null): Observable<Vehicle | undefined> {
