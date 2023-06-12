@@ -18,9 +18,10 @@ export class VehicleService {
   getVehicles(): Observable<Vehicle[]> {
     // TODO: Start here on Monday : 2023-06-12
     // TODO:  ** CONFIGURE PROXY.CONF, HANDLE CORS **
-    const vehicles = of(VEHICLES);
-    this.messageService.add('VehicleService: getVehicles()');
-    return vehicles;
+    //const vehicles = of(VEHICLES);
+    //this.messageService.add('VehicleService: getVehicles()');
+    //return vehicles;
+    return this.http.get<Vehicle[]>(this.vehiclesUrl);
   }
 
   getVehicle(id: string | null): Observable<Vehicle | undefined> {
