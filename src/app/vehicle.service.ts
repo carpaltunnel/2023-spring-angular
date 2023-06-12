@@ -29,4 +29,15 @@ export class VehicleService {
     this.messageService.add(`VehicleService: getVehicle(${id})`);
     return of(vehicle);
   }
+
+  private handleError<T>(op = '', result?: T) {
+    return (error: any): Observable<T> => {
+      // Log to your log aggregator
+      console.error(error);
+
+      this.messageService.add(`Got error : ${error} @ ${new Date().toISOString()}`);
+
+      return of(result as T);
+    }
+  }
 }
