@@ -31,6 +31,20 @@ export class VehicleDetailsComponent {
       });
   }
 
+  save(): void {
+    if (this.vehicle) {
+      this.vehicleService.updateVehicle(this.vehicle)
+        .subscribe(() => this.goBack());
+    }
+  }
+
+  delete(): void {
+    if (this.vehicle) {
+      this.vehicleService.deleteVehicle(this.vehicle)
+        .subscribe(() => this.goBack());
+    }
+  }
+
   goBack(): void {
     this.location.back();
   }

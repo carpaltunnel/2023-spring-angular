@@ -10,6 +10,11 @@ import { MessageService } from './message.service';
 })
 export class VehicleService {
   private vehiclesUrl = 'api/v1/vehicles';
+  private httpOptions = {
+    headers: new HttpHeaders(
+      { 'Content-Type': 'application/json' }
+    ),
+  };
 
   constructor(private messageService: MessageService,
     private http: HttpClient) { }
@@ -32,6 +37,22 @@ export class VehicleService {
         tap(_ => this.messageService.add(`Fetched Vehicle ID ${id}`)),
         catchError(this.handleError<Vehicle>('getVehicle'))
         );
+  }
+
+  updateVehicle(v: Vehicle): Observable<any> {
+    return this.http.patch(`${this.vehiclesUrl}/${v.id}`, v, this.httpOptions)
+    .pipe(
+      tap(_ => this.messageService.add(`Patched Vehicle ID ${v.id}`)),
+      catchError(this.handleError<any>('updateVehicle'))
+      );
+  }
+
+  deleteVehicle(v: Vehicle): Observable<any> {
+    return this.http.delete(`${this.vehiclesUrl}/${v.id}`)
+    .pipe(
+      tap(_ => this.messageService.add(`Deleted Vehicle ID ${v.id}`)),
+      catchError(this.handleError<any>('deletedVehicle'))
+      );
   }
 
   private handleError<T>(op = '', result?: T) {
