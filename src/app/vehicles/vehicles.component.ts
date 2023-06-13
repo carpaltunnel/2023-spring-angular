@@ -15,7 +15,7 @@ export class VehiclesComponent {
     id: '',
     make: '',
     model: '',
-    year: 0,
+    year: new Date().getFullYear(),
   };
 
   constructor(private vehicleService: VehicleService) { }
