@@ -21,6 +21,19 @@ export class VehiclesComponent {
       });
   }
 
+  add(make: string, model: string, year: string) {
+    if (make && model && year) {
+      this.vehicleService.createVehicle({
+        make,
+        model,
+        year: Number(year),
+        id: '',
+      } as Vehicle).subscribe(v => {
+        this.vehicles.push(v);
+      });
+    }
+  }
+
   ngOnInit(): void {
     this.getVehicles();
   }

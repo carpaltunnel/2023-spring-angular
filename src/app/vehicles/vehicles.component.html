@@ -8,3 +8,18 @@
     </a>
   </li>
 </ul>
+
+<div>
+  <label for="vmake">Make : </label>
+  <input id="vmake" #make> <br>
+
+  <label for="vmodel">Model : </label>
+  <input id="vmodel" #model> <br>
+
+  <label for="vyear">Year : </label>
+  <input id="vyear" #year><br>
+
+  <button type="button" class="add-button" (click)="add(make.value, model.value, year.value)">
+    Add Vehicle
+  </button>
+</div>

@@ -55,6 +55,14 @@ export class VehicleService {
       );
   }
 
+  createVehicle(v: Vehicle): Observable<Vehicle> {
+    return this.http.post<Vehicle>(this.vehiclesUrl, v, this.httpOptions)
+    .pipe(
+      tap((vNew: Vehicle) => this.messageService.add(`Created Vehicle w/ ID ${vNew.id}`)),
+      catchError(this.handleError<any>('updateVehicle'))
+      );
+  }
+
   private handleError<T>(op = '', result?: T) {
     return (error: any): Observable<T> => {
       // Log to your log aggregator
