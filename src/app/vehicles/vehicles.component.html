@@ -10,6 +10,7 @@
 </ul>
 
 <div>
+  <h2>Add via Parameters</h2>
   <label for="vmake">Make : </label>
   <input id="vmake" #make> <br>
 
@@ -21,5 +22,21 @@
 
   <button type="button" class="add-button" (click)="add(make.value, model.value, year.value)">
     Add Vehicle
+  </button>
+</div>
+
+<div>
+  <h2>Add via Object (recommended)</h2>
+  <label for="vmakeObject">Make : </label>
+  <input id="vmakeObject" [(ngModel)]="newVehicle.make"> <br>
+
+  <label for="vmodelObject">Model : </label>
+  <input id="vmodelObject" [(ngModel)]="newVehicle.model"> <br>
+
+  <label for="vyearObject">Year : </label>
+  <input type="number" id="vyearObject" [(ngModel)]="newVehicle.year"><br>
+
+  <button type="button" class="add-button" (click)="addVehicle()">
+    Add Vehicle (via Object)
   </button>
 </div>

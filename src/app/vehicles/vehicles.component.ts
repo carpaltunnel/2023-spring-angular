@@ -11,6 +11,12 @@ import { VehicleService } from '../vehicle.service';
 export class VehiclesComponent {
   vehicles: Vehicle[] = [];
   selectedVehicle!: Vehicle;
+  newVehicle: Vehicle = {
+    id: '',
+    make: '',
+    model: '',
+    year: 0,
+  };
 
   constructor(private vehicleService: VehicleService) { }
 
@@ -21,7 +27,7 @@ export class VehiclesComponent {
       });
   }
 
-  add(make: string, model: string, year: string) {
+  add(make: string, model: string, year: string): void {
     if (make && model && year) {
       this.vehicleService.createVehicle({
         make,
@@ -31,6 +37,15 @@ export class VehiclesComponent {
       } as Vehicle).subscribe(v => {
         this.vehicles.push(v);
       });
+    }
+  }
+
+  addVehicle(): void {
+    if (this.newVehicle) {
+      this.vehicleService.createVehicle(this.newVehicle)
+        .subscribe(v => {
+          this.vehicles.push(v);
+        });
     }
   }
 
