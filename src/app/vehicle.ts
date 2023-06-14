@@ -4,4 +4,5 @@ export interface Vehicle {
   model: string;
   year: number;
   //TODO: color: string;
+  imageUrl?: string;
 }

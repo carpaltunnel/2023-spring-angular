@@ -1,8 +1,16 @@
 <div *ngIf="vehicle"> <!-- if (selectedVehicle) { show div } -->
   <h2>{{ vehicle.make | uppercase }} Details</h2>
 
-  <div id="vehicleImage">
+  <div class="vehicleImage">
     <img src="assets/images/{{ vehicle.model }}.jpg">
+  </div>
+
+  <div class="vehicleImage">
+    <img src="{{ vehicle.imageUrl }}">
+  </div>
+
+  <div class="vehicleImage">
+    <img [src]="vehicle.imageUrl">
   </div>
 
   <div><strong>ID:</strong> {{ vehicle.id }}</div>
