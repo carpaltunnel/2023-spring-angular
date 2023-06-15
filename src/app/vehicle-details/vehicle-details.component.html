@@ -5,13 +5,17 @@
     <img src="assets/images/{{ vehicle.model }}.jpg">
   </div -->
 
-  <div *ngIf="vehicle.imageUrl" class="vehicleImage">
+  <!-- div *ngIf="vehicle.imageUrl" class="vehicleImage">
     <img src="{{ vehicle.imageUrl }}">
-  </div>
+  </div -->
 
   <!-- div *ngIf="vehicle.imageUrl" class="vehicleImage">
     <img [src]="vehicle.imageUrl">
   </div -->
+
+   <div class="vehicleImage">
+    <img src="{{ vehicle.imageUrl || 'assets/images/Image_not_available.png' }}">
+  </div>
 
   <div><strong>ID:</strong> {{ vehicle.id }}</div>
   <div>
